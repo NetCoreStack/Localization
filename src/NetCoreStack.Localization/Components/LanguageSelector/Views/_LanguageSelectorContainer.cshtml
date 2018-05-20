@@ -1,0 +1,33 @@
+﻿@using NetCoreStack.Localization.Components.LanguageSelector.Models
+@using NetCoreStack.Localization
+@model LanguageSelectorModel
+@{
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    var formAction = Url.Action("SetLanguage", LocalizationGlobals.NetCoreStackLocalizationControllerRoute);
+}
+
+@if (Model.SetCookieWithJavaScript)
+{
+    await Html.RenderPartialAsync("~/Components/LanguageSelector/Views/_LanguageSelector.cshtml", Model);
+}
+else
+{
+    <text>
+    <form action="@formAction?returnUrl=@returnUrl" method="post" class="netcoreStack-languageSelector-form" role="form">
+        @{await Html.RenderPartialAsync("~/Components/LanguageSelector/Views/_LanguageSelector.cshtml", Model);}
+    </form>
+    </text>
+}
+
+
+@if (Model.SetCookieWithJavaScript)
+{
+    <text>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('select[name="@Model.Name"]').onchange = netCoreStackLocalization_changeEventHandler;
+        }, false);
+        </script>
+    </text>
+}
+
