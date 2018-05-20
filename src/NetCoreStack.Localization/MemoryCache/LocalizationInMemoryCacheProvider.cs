@@ -45,7 +45,7 @@ namespace NetCoreStack.Localization.MemoryCache
                 var defaultLocalizationCacheProviderOptions = new LocalizationCacheProviderOptions
                 {
                     Priority = CacheItemPriority.NeverRemove,
-                    AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddMinutes(1))
+                    AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddMinutes(30))
                 };
 
                 SetObject(key, value, cacheProviderOption ?? defaultLocalizationCacheProviderOptions);
