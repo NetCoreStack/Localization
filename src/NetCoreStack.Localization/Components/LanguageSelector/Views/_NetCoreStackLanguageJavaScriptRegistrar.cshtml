@@ -1,0 +1,6 @@
+﻿@using NetCoreStack.Localization.Components.LanguageSelector.Models
+@model Dictionary<string, string>
+<script>
+    window.culture = {};
+    window.culture.resource = @Html.Raw(Json.Serialize(Model))
+</script>

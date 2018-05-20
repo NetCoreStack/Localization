@@ -1,0 +1,63 @@
+﻿@using NetCoreStack.Localization;
+@using System
+@using System.Globalization
+@{
+    ViewData["Title"] = @Localizer["Home"];
+}
+
+<div class="my-3 p-3 bg-white rounded box-shadow">
+
+    <h1>@Localizer["Hello"]</h1>
+    <h2>@Localizer["Test"]</h2>
+    <hr />
+
+    <div style="overflow-y:scroll; height: 250px;">
+        <table class="table table-sm table-striped">
+            <tbody>
+                <tr><th>Winning provider:</th><td>@CultureInfo.CurrentCulture.Name</td></tr>
+                <tr><th>@Localizer["Current request culture:"]</th><td>@CultureInfo.CurrentCulture.DisplayName (@CultureInfo.CurrentCulture.Name)</td></tr>
+                <tr><th>@Localizer["Current request UI culture:"]</th><td>@CultureInfo.CurrentUICulture.DisplayName (@CultureInfo.CurrentUICulture.Name)</td></tr>
+                <tr><th>@Localizer["Current thread culture:"]</th><td>@CultureInfo.DefaultThreadCurrentCulture?.DisplayName (@CultureInfo.CurrentCulture.Name)</td></tr>
+                <tr><th>@Localizer["Current thread UI culture:"]</th><td>@CultureInfo.DefaultThreadCurrentUICulture?.DisplayName (@CultureInfo.CurrentUICulture.Name)</td></tr>
+                <tr><th>@Localizer["Current date (invariant full):"]</th><td>@DateTime.Now.ToString("F", CultureInfo.InvariantCulture)</td></tr>
+                <tr><th>@Localizer["Current date (invariant):"]</th><td>@DateTime.Now.ToString(CultureInfo.InvariantCulture)</td></tr>
+                <tr><th>@Localizer["Current date (request full):"]</th><td>@DateTime.Now.ToString("F")</td></tr>
+                <tr><th>@Localizer["Current date (request):"]</th><td>@DateTime.Now.ToString()</td></tr>
+                <tr><th>@Localizer["Current time (invariant):"]</th><td>@DateTime.Now.ToString("T", CultureInfo.InvariantCulture)</td></tr>
+                <tr><th>@Localizer["Current time (request):"]</th><td>@DateTime.Now.ToString("T")</td></tr>
+                <tr><th>@Localizer["Big number (invariant):"]</th><td>@((Math.Pow(2, 42) + 0.42).ToString("N", CultureInfo.InvariantCulture))</td></tr>
+                <tr><th>@Localizer["Big number (request):"]</th><td>@((Math.Pow(2, 42) + 0.42).ToString("N"))</td></tr>
+                <tr><th>@Localizer["Big number negative (invariant):"]</th><td>@((-Math.Pow(2, 42) + 0.42).ToString("N", CultureInfo.InvariantCulture))</td></tr>
+                <tr><th>@Localizer["Big number negative (request):"]</th><td>@((-Math.Pow(2, 42) + 0.42).ToString("N"))</td></tr>
+                <tr><th>@Localizer["Money (invariant):"]</th><td>@((2199.50).ToString("C", CultureInfo.InvariantCulture))</td></tr>
+                <tr><th>@Localizer["Money (request):"]</th><td>@((2199.50).ToString("C"))</td></tr>
+                <tr><th>@Localizer["Money negative (invariant):"]</th><td>@((-2199.50).ToString("C", CultureInfo.InvariantCulture))</td></tr>
+                <tr><th>@Localizer["Money negative (request):"]</th><td>@((-2199.50).ToString("C"))</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr />
+
+    <button id="clienSideLocalization" class="btn btn-outline-primary">@Localizer["Click and show client side localization sample"]</button>
+    <div id="clienSideLocalizationSample" class="alert alert-success mt-3" style="display: none;" role="alert">
+        <p id="clientSideLocalizationSampleMessage"></p>
+        <hr />
+        <h5 class="alert-heading">How to use</h5>
+        <p><code>window.culture.resource["Client Side Localization Sample Message"]</code></p>
+        <hr />
+        <p><code id="clientSideLocalizationSampleCode"></code></p>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        document.getElementById('clienSideLocalization').addEventListener('click', function () {
+            document.getElementById('clienSideLocalizationSample').style.display = "block";
+            document.getElementById('clientSideLocalizationSampleMessage').innerHTML = window.culture.resource["Client Side Localization Sample Message"];
+            document.getElementById('clientSideLocalizationSampleCode').innerHTML = "window.culture.resource = " + JSON.stringify(window.culture.resource);
+        });
+    </script>
+}
+

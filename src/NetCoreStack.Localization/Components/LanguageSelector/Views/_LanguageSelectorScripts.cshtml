@@ -1,0 +1,31 @@
+﻿<script>
+
+    function netCoreStackLocalization_clearCookie() {
+        document.cookie = '@Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName="""";path=/';
+    };
+
+    function netCoreStackLocalization_useCookie(culture) {
+        var cookieValue = '@Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName=c=' + culture + '|uic=' + culture + ";path=/";
+        netCoreStackLocalization_clearCookie();
+        document.cookie = cookieValue;
+        window.location = window.location.href.split('?')[0];
+    };
+    
+    function netCoreStackLocalization_changeEventHandler(event) {
+        if (!event.target.value) clearCookie();
+
+        var componentName = event.target.name
+        var selectedValue = event.target.value;
+        netCoreStackLocalization_useCookie(selectedValue);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var defaultCulture = "@System.Globalization.CultureInfo.CurrentCulture";
+        var defaultUiCulture = "@System.Globalization.CultureInfo.CurrentUICulture";
+
+        document.querySelector('select.netcoreStack-languageSelector [value="' + defaultUiCulture + '"]').selected = true;
+
+        console.info(defaultCulture, defaultUiCulture, "@Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName")
+    });
+
+</script>
