@@ -1,10 +1,9 @@
-
 # NetCoreStack Localization
 ### Database Resource Localization for .NET Core with Entity Framework and In Memory Cache
 
 **NetCoreStack.Localization**  
-[![NuGet](https://img.shields.io/nuget/v/NetCoreStack.Localization.svg)](https://www.nuget.org/packages/NetCoreStack.Localization)
-![](https://img.shields.io/nuget/dt/NetCoreStack.Localization.svg)
+[![NuGet](https://img.shields.io/nuget/v/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
+[![NuGet](https://img.shields.io/nuget/dt/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
 
 
 ### Links
@@ -29,9 +28,13 @@ PM> Install-Package NetCoreStack.Localization
 ### Installation
 TO DO...
 
-### Preview
-![Home Page](https://github.com/tahaipek/Localization/blob/master/Sample_01.png?raw=true)
+### Test Project Preview
 
-![Forms / Validations](https://github.com/tahaipek/Localization/blob/master/Sample_02.png?raw=true)
+#### Home Page / Client side localization
+![Home Page](https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true)
 
-![Api](https://github.com/tahaipek/Localization/blob/master/Sample_03.png?raw=true)
+#### Forms / Validations
+![Forms / Validations](https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true)
+
+#### Api
+![Api](https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true)
