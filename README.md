@@ -21,17 +21,59 @@ PM> Install-Package NetCoreStack.Localization
 * Directly access and manage Languages/Resources with api and code
 
 ### Installation
-To do...
+##### AppSettings Configuration
+Configuration settings in `AppSettings.json`:
+```json
+{
+	"DbSettings": {
+    	"SqlConnectionString": "Server=.;Database=LocalizationTest;Trusted_Connection=True;MultipleActiveResultSets=true"
+  	}
+}
+```
+##### Enable NetCoreStack.Localization in ASP.NET Core
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+	services.AddNetCoreStackMvc(options =>
+	{
+		options.AppName = "NetCoreStack Localization";
+	});
+
+	services.AddMvc();
+	
+	//Required
+	services.AddNetCoreStackLocalization(Configuration);
+}
+```
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+	app.UseStaticFiles();
+	app.UseNetCoreStackMvc();
+	
+	//Required
+	app.UseNetCoreStackLocalization();
+
+	app.UseMvc(routes =>
+	{
+    	routes.MapRoute(
+			name: "default",
+			template: "{controller=Home}/{action=Index}/{id?}");
+	});
+}
+```
 
 ------
 
 ### Test Project Preview
 
 ##### Home Page / Client side localization
-<img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="75%" >
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="35%" ></a>
+
 
 ##### Forms / Validations
-<img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="75%" >
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="35%" ></a>
 
 ##### Api
-<img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="75%" >
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="35%" ></a>
