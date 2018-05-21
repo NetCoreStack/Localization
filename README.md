@@ -1,4 +1,3 @@
-
 # NetCoreStack Localization
 ### Database Resource Localization for .NET Core with Entity Framework and In Memory Cache
 
@@ -29,9 +28,13 @@ PM> Install-Package NetCoreStack.Localization
 ### Installation
 TO DO...
 
-### Preview
-![Home Page](https://github.com/tahaipek/Localization/blob/master/Sample_01.png?raw=true)
+### Test Project Preview
 
-![Forms / Validations](https://github.com/tahaipek/Localization/blob/master/Sample_02.png?raw=true)
+#### Home Page / Client side localization
+![Home Page](https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true)
 
-![Api](https://github.com/tahaipek/Localization/blob/master/Sample_03.png?raw=true)
+#### Forms / Validations
+![Forms / Validations](https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true)
+
+#### Api
+![Api](https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true)
