@@ -1,4 +1,8 @@
-﻿--Test Project English Resources
+﻿-- Languages
+INSERT [Localization].[Language] ([CultureName], [DisplayName], [Country], [Region], [IsDefaultLanguage]) VALUES (N'en-US', N'English - United States', N'English - United States', N'United States', 1)
+INSERT [Localization].[Language] ([CultureName], [DisplayName], [Country], [Region], [IsDefaultLanguage]) VALUES (N'tr-TR', N'Turkish - Turkey', N'Turkish - Turkey', N'Turkey', 0)
+
+--Test Project English Resources
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'AboutMe'		, N'AboutMe', NULL)
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'Address'		, N'Address', NULL)
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'City'			, N'City', NULL)
