@@ -26,8 +26,8 @@ Configuration settings in `AppSettings.json`:
 ```json
 {
 	"DbSettings": {
-    	"SqlConnectionString": "Server=.;Database=LocalizationTest;Trusted_Connection=True;MultipleActiveResultSets=true"
-  	}
+		"SqlConnectionString": "Server=.;Database=LocalizationTest;Trusted_Connection=True;MultipleActiveResultSets=true"
+	}
 }
 ```
 ##### Enable NetCoreStack.Localization in ASP.NET Core
@@ -62,6 +62,31 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 			template: "{controller=Home}/{action=Index}/{id?}");
 	});
 }
+```
+
+```html
+<head>
+    <title>@ViewData["Title"] - NetCoreStack.Localization.Test.Hosting</title>
+	
+	<!-- Optional: The resources defined javascript. =>  "window.culture.resource"  -->
+    <netcorestack-javascriptregistrar></netcorestack-javascriptregistrar>
+    
+	<!-- Optional: 
+				If you want cookies to be set by JavaScript, you should use this.   
+				If you don't want cookies to be set by JavaScript, remove this line. It will automatically redirect to Controller Action.
+			-->
+	<netcorestack-languageSelector-scripts></netcorestack-languageSelector-scripts>
+</head>
+<body>
+	<!--  Required: Language Selector Combobox
+				Optional:
+					If you want cookies to be set by JavaScript, you should set "set-cookie-with-java-script" property.   
+					If you don't want cookies to be set by JavaScript, the application sets it through Controller Action.
+		-->
+	<netcorestack-languageSelector name="culture" set-cookie-with-java-script="true"></netcorestack-languageSelector>
+	
+	@Localizer["Logo Description"]
+</body>
 ```
 
 ------
