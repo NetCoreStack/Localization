@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NetCoreStack.Mvc;
@@ -17,12 +19,18 @@ namespace NetCoreStack.Localization.Test.Hosting
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+
+            });
             services.AddNetCoreStackMvc(options =>
             {
                 options.AppName = "NetCoreStack Localization";
             });
 
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddNetCoreStackLocalization(Configuration);
         }
 
@@ -36,9 +44,11 @@ namespace NetCoreStack.Localization.Test.Hosting
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
 
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseNetCoreStackMvc();
             app.UseNetCoreStackLocalization();

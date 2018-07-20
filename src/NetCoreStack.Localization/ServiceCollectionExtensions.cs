@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
@@ -43,8 +43,9 @@ namespace NetCoreStack.Localization
             });
 
             services.AddMvc()
+                .ConfigureApplicationPartManager(k => k.FeatureProviders.Add(new GenericControllerFeatureProvider())) // OR //.AddApplicationPart(typeof(ServiceCollectionExtensions).GetTypeInfo().Assembly)
                 .AddDataAnnotationsLocalization()
-                .AddControllersAsServices();
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         public static void UseNetCoreStackLocalization(this IApplicationBuilder app)
@@ -64,9 +65,6 @@ namespace NetCoreStack.Localization
             }
 
             var requestLocalizationOptions = new RequestLocalizationOptions();
-            //TODO: QueryString Provider, Header Provider, UrlRequest Provider
-            //requestLocalizationOptions.RequestCultureProviders.Insert(0, new EntityRequestCultureProvider());
-            //requestLocalizationOptions.RequestCultureProviders.Insert(1, new UrlRequestCultureProvider());
             requestLocalizationOptions.DefaultRequestCulture = defaultCulture;
             requestLocalizationOptions.SupportedCultures = supportedCultures;
             requestLocalizationOptions.SupportedUICultures = supportedCultures;
@@ -74,21 +72,21 @@ namespace NetCoreStack.Localization
             app.UseRequestLocalization(requestLocalizationOptions);
         }
 
-        public static IMvcBuilder AddControllersAsServices(this IMvcBuilder builder)
+    public class GenericControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>
+    {
+        public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
         {
-            var feature = new ControllerFeature();
-            builder.PartManager.PopulateFeature(feature);
-
             var currentComponentController = feature.Controllers
-                                                .Where(c => c.AsType().Assembly.FullName == typeof(ServiceCollectionExtensions).GetTypeInfo().Assembly.FullName)
-                                                .Select(c => c.AsType());
+                                     .Where(c => c.AsType().Assembly.FullName == typeof(ServiceCollectionExtensions).GetTypeInfo().Assembly.FullName)
+                                     .Select(c => c.AsType());
 
             foreach (var controller in currentComponentController)
             {
-                builder.Services.TryAddTransient(controller, controller);
+                if (!feature.Controllers.Any(k => k.Equals(controller.GetTypeInfo())))
+                    feature.Controllers.Add(controller.GetTypeInfo());
             }
 
-            return builder;
         }
     }
+}
 }
