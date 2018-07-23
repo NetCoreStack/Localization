@@ -6,7 +6,7 @@
 [Latest release on Nuget](https://www.nuget.org/packages/NetCoreStack.Localization)
 
 ### Requirements:
-* .NET Core 2.0 or later
+* .NET Core 2.1 or later
 * SQL Server 2008-2016
 
 #### Install for .NET Core
