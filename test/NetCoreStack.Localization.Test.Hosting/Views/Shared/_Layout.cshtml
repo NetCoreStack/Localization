@@ -7,39 +7,17 @@
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/jquery.validate.min.js"></script>
     <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script>
-        (function ($) {
-            var defaultOptions = {
-                validClass: 'is-valid',
-                errorClass: 'is-invalid',
-                highlight: function (element, errorClass, validClass) {
-                    $(element)
-                        .removeClass(validClass)
-                        .addClass(errorClass);
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element)
-                        .removeClass(errorClass)
-                        .addClass(validClass);
-                }
-            };
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-            $.validator.setDefaults(defaultOptions);
-
-            $.validator.unobtrusive.options = {
-                errorClass: defaultOptions.errorClass,
-                validClass: defaultOptions.validClass,
-            };
-        })(jQuery);
-    </script>
     <netcorestack-javascriptregistrar></netcorestack-javascriptregistrar>
     <netcorestack-languageSelector-scripts></netcorestack-languageSelector-scripts>
-    
+
     @RenderSection("Styles", required: false)
 
 </head>
@@ -70,6 +48,11 @@
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">@Localizer["About"]</a>
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["Contact"]</a>
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Api">Component Api</a>
+
+                <a class="nav-link pl-5" asp-area="" asp-controller="Home" asp-action="CustomException">Exception Localization</a>
+                <a class="nav-link" id="ajaxException" href="#">Ajax Exception Localization</a>
+
+
 
             </nav>
         </div>
@@ -103,6 +86,102 @@
         </div>
     </footer>
 
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false);
+
+    <script>
+        (function ($) {
+            var defaultOptions = {
+                validClass: 'is-valid',
+                errorClass: 'is-invalid',
+                highlight: function (element, errorClass, validClass) {
+                    $(element)
+                        .removeClass(validClass)
+                        .addClass(errorClass);
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element)
+                        .removeClass(errorClass)
+                        .addClass(validClass);
+                }
+            };
+
+            $.validator.setDefaults(defaultOptions);
+
+            $.validator.unobtrusive.options = {
+                errorClass: defaultOptions.errorClass,
+                validClass: defaultOptions.validClass,
+            };
+
+            window.showMessage = function (state, message) {
+
+                if (state == "danger") { //Toastr fix
+                    state = "error";
+                }
+                toastr[state](message);
+            };
+
+            window.ajaxResultNotify = function (args) {
+                var options = $.extend({}, args);
+                if (args.resultState != "success") {
+                    if ($.isArray(args.validations) && args.validations.length > 0) {
+                        options.content = "";
+                        _.each(args.validations, function (item) {
+                            options.content += item.messages.join() + '<br/>';
+                        });
+                    }
+                }
+
+                if (!options.resultState) {
+                    return;
+                }
+
+                var positionClass = "";
+                if (options.position && options.position.startsWith("toast")) {
+                    positionClass = options.position;
+                }
+                else {
+                    positionClass = "toast-" + options.position;
+                }
+
+                var properties = $.extend({}, options.properties, { positionClass: positionClass });
+                toastr[options.resultState](options.content, options.title, properties);
+            };
+
+            window.exceptionResult = function (dataResult) {
+                if (typeof dataResult == undefined || dataResult == null) {
+                    throw "dataResult undefined || null";
+                }
+
+                if (dataResult.resultState == "success") {
+                    if ((typeof dataResult.redirectUrl != undefined) && dataResult.redirectUrl.length > 0) {
+                        window.location.href = dataResult.redirectUrl;
+                        return;
+                    }
+
+                    showMessage(1, dataResult.content);
+                }
+                else {
+                    ajaxResultNotify(dataResult);
+                }
+            };
+
+            $("#ajaxException").click(function (e) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Home/CustomAjaxException",
+                    dataType: "json",
+                    success: function (response) {
+                        window.exceptionResult(response);
+                    },
+                    error: function (request, status, error) {
+                        window.showMessage("error", error);
+                    }
+                });
+                e.preventDefault();
+
+            });
+        })(jQuery);
+    </script>
+
 </body>
 </html>

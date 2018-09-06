@@ -105,6 +105,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ##### Api
 <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="35%" ></a>
 
+##### Custom Exception Localization
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" align="center" width="35%" ></a>
+
+##### Ajax Exception Localization
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" align="center" width="35%" ></a>
+
 ---------
 
 ###### .Net Core Localization

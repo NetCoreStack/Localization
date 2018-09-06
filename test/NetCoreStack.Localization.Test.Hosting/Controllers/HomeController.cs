@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using NetCoreStack.Localization.Test.Hosting.Exceptions;
+using NetCoreStack.Localization.Test.Hosting.Models;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc;
-using NetCoreStack.Localization.MemoryCache;
-using NetCoreStack.Localization.Test.Hosting.Models;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace NetCoreStack.Localization.Test.Hosting.Controllers
 {
@@ -19,7 +12,6 @@ namespace NetCoreStack.Localization.Test.Hosting.Controllers
     {
         public HomeController(IOptions<MvcOptions> options)
         {
-
         }
 
         public IActionResult Index()
@@ -56,7 +48,7 @@ namespace NetCoreStack.Localization.Test.Hosting.Controllers
         public IActionResult Forms(TestFormViewMode model)
         {
             if (!ModelState.IsValid)
-            { 
+            {
                 return View("Forms", model);
             }
 
@@ -68,8 +60,20 @@ namespace NetCoreStack.Localization.Test.Hosting.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult ShowMeTheCulture() {
+        public IActionResult ShowMeTheCulture()
+        {
             return new JsonResult($"CurrentCulture:{CultureInfo.CurrentCulture.Name}, CurrentUICulture:{CultureInfo.CurrentUICulture.Name}");
         }
+
+        public IActionResult CustomAjaxException()
+        {
+            throw new ItemNotFoundException();
+        }
+
+        public IActionResult CustomException()
+        {
+            throw new CustomErrorException();
+        }
+
     }
 }

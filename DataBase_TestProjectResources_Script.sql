@@ -21,6 +21,8 @@ INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUE
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'PhoneNumber'	, N'Phone Number', NULL)
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'CreditCard'		, N'CreditCard', NULL)
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'IpAddress'		, N'IpAddress', NULL)
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'ItemNotFoundExceptionKey', N'Item not found', NULL)
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'CustomExceptionKey', N'Test Custom Exception Localization', NULL)
 
 --Test Project Turkish Resources
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'AboutMe'		, N'Hakkımda', NULL)
@@ -41,3 +43,5 @@ INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUE
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'PhoneNumber'	, N'Telefon Numarası', NULL)
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'CreditCard'		, N'Kredi Kartı', NULL)
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'IpAddress'		, N'İp Adresi', NULL)
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'ItemNotFoundExceptionKey', N'Öğe bulunamadı', NULL)
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'CustomExceptionKey', N'Test Özel Hata Sayfası Yerelleştirme', NULL)

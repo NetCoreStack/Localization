@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NetCoreStack.Localization.Test.Hosting.Exceptions;
 using NetCoreStack.Mvc;
 
 namespace NetCoreStack.Localization.Test.Hosting
@@ -30,7 +31,12 @@ namespace NetCoreStack.Localization.Test.Hosting
                 options.AppName = "NetCoreStack Localization";
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new CustomExceptionFilter());
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddNetCoreStackLocalization(Configuration);
         }
 

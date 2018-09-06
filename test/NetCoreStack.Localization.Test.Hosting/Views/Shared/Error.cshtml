@@ -1,22 +1,39 @@
-﻿@model ErrorViewModel
+﻿@using Microsoft.AspNetCore.Http
 @{
-    ViewData["Title"] = "Error";
+    Layout = "_Layout";
+    object exceptionContext = null;
+    BasicExceptionContext context = new BasicExceptionContext();
+    ViewContext.HttpContext.Items.TryGetValue(nameof(BasicExceptionContext), out exceptionContext);
+
+    var exceptionMessage = "";
+    var exceptionDetail = "";
+    if (exceptionContext != null && exceptionContext is BasicExceptionContext)
+    {
+        context = exceptionContext as BasicExceptionContext;
+        exceptionMessage = !string.IsNullOrEmpty(context.Message) ? context.Message : "Bir hata oluştu!";
+        exceptionDetail = !string.IsNullOrEmpty(context.ExceptionDetail) ? context.ExceptionDetail : "";
+    }
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<div class="my-3 p-5 bg-white rounded box-shadow text-center">
+        <div class="display-1 text-muted mb-5"><i class="si si-exclamation"></i> @ViewBag.StatusCode</div>
+        <h1 class="h2 mb-3">@Html.Raw(exceptionMessage)</h1>
+        <p class="h4 text-muted font-weight-normal mb-7">
+            @if (context.IsOperationalException)
+            {
+                @*<strong>@Html.Raw(context.Message)</strong>*@
+            }
+            else
+            {
+                @context.LogGuid <br /> @exceptionDetail <br />
+            }
+        </p>
 
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
+        <a class="btn btn-secondary btn-lg" href="javascript:history.back()">
+            <i class="fe fe-arrow-left mr-2"></i>Back
+        </a>
 
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
-</p>
+        <a class="btn btn-primary btn-lg" href="/">
+            <i class="fe fe-home mr-2"></i>Home
+        </a>
+</div>
