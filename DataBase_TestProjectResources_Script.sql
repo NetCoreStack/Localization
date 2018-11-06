@@ -2,6 +2,38 @@
 INSERT [Localization].[Language] ([CultureName], [DisplayName], [Country], [Region], [IsDefaultLanguage]) VALUES (N'en-US', N'English - United States', N'English - United States', N'United States', 1)
 INSERT [Localization].[Language] ([CultureName], [DisplayName], [Country], [Region], [IsDefaultLanguage]) VALUES (N'tr-TR', N'Turkish - Turkey', N'Turkish - Turkey', N'Turkey', 0)
 
+-- .Net Core Default Validation Message Localization Resources
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'The value ''{0}'' is not valid for {1}.'                 , N'The value ''{0}'' is not valid for {1}.'                 , N'AttemptedValueIsInvalidAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'A value for the ''{0}'' property was not provided.'      , N'A value for the ''{0}'' property was not provided.'      , N'MissingBindRequiredValueAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'A value is required.'                                  , N'A value is required.'                                  , N'MissingKeyOrValueAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'The supplied value is invalid for {0}.'                , N'The supplied value is invalid for {0}.'                , N'UnknownValueIsInvalidAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'The value ''{0}'' is invalid.'                           , N'The value ''{0}'' is invalid.'                           , N'ValueIsInvalidAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'The field {0} must be a number.'                       , N'The field {0} must be a number.'                       , N'ValueMustBeANumberAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'Null value is invalid.'                                , N'Null value is invalid.'                                , N'ValueMustNotBeNullAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'The {0} field is not a valid e-mail address.'          , N'The {0} field is not a valid e-mail address.'          , N'InvalidEmail')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'The field {0} must match the regular expression ''{1}''.', N'The field {0} must match the regular expression ''{1}''.', N'MustMatchRegex')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'The password and confirmation password do not match.'  , N'The password and confirmation password do not match.'  , N'PasswordNoMatch')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'{0} must be less than {2} and greater then {1}.'       , N'{0} must be less than {2} and greater then {1}.'       , N'Range')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'{0} cannot be empty.'                                  , N'{0} cannot be empty.'                                  , N'Required')
+
+-- .Net Core Default Validation Localization Turkish Resources
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'The value ''{0}'' is not valid for {1}.'                 , N'''{0}'' değeri ''{1}'' için geçerli değil.', N'AttemptedValueIsInvalidAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'A value for the ''{0}'' property was not provided.'      , N'''{0}'' için bir değer sağlanmadı.', N'MissingBindRequiredValueAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'A value is required.'                                  , N'Bu değer zorunludur.', N'MissingKeyOrValueAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'The supplied value is invalid for {0}.'                , N'Sağlanan değer, ''{0}'' için geçersiz.', N'UnknownValueIsInvalidAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'The value ''{0}'' is invalid.'                           , N'''{0}'' değeri geçersiz.', N'ValueIsInvalidAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'The field {0} must be a number.'                       , N'''{0}'' alanı bir sayı olmalıdır.', N'ValueMustBeANumberAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'Null value is invalid.'                                , N'Null değer geçersiz.', N'ValueMustNotBeNullAccessor')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'The {0} field is not a valid e-mail address.'          , N'''{0}'' alanı geçerli bir e-posta adresi değil.', N'InvalidEmail')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'The field {0} must match the regular expression ''{1}''.', N'''{0}'' alanı, ''{1}'' ifadesinin normal ifadesiyle eşleşmelidir.', N'MustMatchRegex')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'The password and confirmation password do not match.'  , N'Şifre ve doğrulama şifresi uyuşmuyor.', N'PasswordNoMatch')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'{0} must be less than {2} and greater then {1}.'       , N'''{0}'', ''{2}'' den düşük ve ''{1}'' den daha büyük olmalıdır.', N'Range')
+INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (2, N'{0} cannot be empty.'                                  , N'''{0}'' boş olamaz.', N'Required')
+
+
+
+
+
 --Test Project English Resources
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'AboutMe'		, N'AboutMe', NULL)
 INSERT [Localization].[Resource] ([LanguageId], [Key], [Value], [Comment]) VALUES (1, N'Address'		, N'Address', NULL)
