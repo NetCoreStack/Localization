@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/v/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
 [![NuGet](https://img.shields.io/nuget/dt/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
 
-[Latest release on Nuget](https://www.nuget.org/packages/NetCoreStack.Localization)
+[Latest release on Nuget - https://www.nuget.org/packages/NetCoreStack.Localization](https://www.nuget.org/packages/NetCoreStack.Localization)
 
 ### Requirements:
 * .NET Core 2.1 or later
@@ -34,10 +34,7 @@ Configuration settings in `AppSettings.json`:
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-	services.AddNetCoreStackMvc(options =>
-	{
-		options.AppName = "NetCoreStack Localization";
-	});
+	services.AddNetCoreStackMvc(options => { options.AppName = "NetCoreStack Localization"; });
 
 	services.AddMvc();
 	
@@ -58,8 +55,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 	app.UseMvc(routes =>
 	{
     	routes.MapRoute(
-			name: "default",
-			template: "{controller=Home}/{action=Index}/{id?}");
+		name: "default",
+		template: "{controller=Home}/{action=Index}/{id?}");
 	});
 }
 ```
@@ -69,21 +66,21 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     <title>@ViewData["Title"] - NetCoreStack.Localization.Test.Hosting</title>
 	
 	<!-- Optional: The resources defined javascript. =>  "window.culture.resource"  -->
-    <netcorestack-javascriptregistrar></netcorestack-javascriptregistrar>
+	<netcorestack-javascriptregistrar></netcorestack-javascriptregistrar>
     
 	<!-- 
-		Optional: 
-		- If you want cookies to be set by JavaScript, you should use this.   
-		- If you don't want cookies to be set by JavaScript, remove this line. It will automatically redirect to Controller Action.
+	Optional: 
+	   - If you want cookies to be set by JavaScript, you should use this.   
+	   - If you don't want cookies to be set by JavaScript, remove this line. It will automatically redirect to Controller Action.
 	-->
 	<netcorestack-languageSelector-scripts></netcorestack-languageSelector-scripts>
 </head>
 <body>
 	<!--  
-		Required: Language Selector Combobox
-		Optional:
-			- If you want cookies to be set by JavaScript, you should set "set-cookie-with-java-script" property.   
-			- If you don't want cookies to be set by JavaScript, the application sets it through Controller Action.
+	Required: Language Selector Combobox
+	Optional:
+	   - If you want cookies to be set by JavaScript, you should set "set-cookie-with-java-script" property.   
+	   - If you don't want cookies to be set by JavaScript, the application sets it through Controller Action.
 	-->
 	<netcorestack-languageSelector name="culture" set-cookie-with-java-script="true"></netcorestack-languageSelector>
 	
@@ -96,20 +93,20 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ### Test Project Preview
 
 ##### Home Page / Client side localization
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="35%" ></a>
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="45%" ></a>
 
 
 ##### Forms / Validations
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="35%" ></a>
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="45%" ></a>
 
 ##### Api
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="35%" ></a>
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="45%" ></a>
 
 ##### Custom Exception Localization
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" align="center" width="35%" ></a>
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" align="center" width="45%" ></a>
 
 ##### Ajax Exception Localization
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" align="center" width="35%" ></a>
+<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" align="center" width="45%" ></a>
 
 ---------
 
