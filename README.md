@@ -76,7 +76,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 </body>
 ```
 
-##### Localization in back-end
+##### Back-end Localization in *.cs file
 ```csharp 
 public class HomeController : Controller
 {
