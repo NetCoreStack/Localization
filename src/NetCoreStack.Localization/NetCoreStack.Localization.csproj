@@ -11,14 +11,14 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/NetCoreStack/Localization</RepositoryUrl>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
-    <FileVersion>1.0.5.0</FileVersion>
-    <Version>1.0.5</Version>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
+    <Version>1.0.6</Version>
     <PackageIconUrl>https://raw.githubusercontent.com/NetCoreStack/Localization/master/icon-localization.png</PackageIconUrl>
     <PackageProjectUrl>https://netcorestack.github.io/Localization/</PackageProjectUrl>
     <Description>Database Resource Localization for .NET Core with Entity Framework and In Memory Cache</Description>
     <PackageTags>Localization</PackageTags>
-    <PackageReleaseNotes>UseDefaultLanguageWhenValueIsNull setting and some improvements</PackageReleaseNotes>
+    <PackageReleaseNotes>SQLite Support</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
