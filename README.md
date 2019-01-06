@@ -1,4 +1,4 @@
-## NetCoreStack Localization
+## NetCoreStack Localization v1.0.5
 ### Database Resource Localization for .NET Core with Entity Framework and In Memory Cache
 [![NuGet](https://img.shields.io/nuget/v/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
 [![NuGet](https://img.shields.io/nuget/dt/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
