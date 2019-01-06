@@ -100,17 +100,17 @@ public class HomeController : Controller
 
 | How To Use  | Forms & Validations|
 | ------------- | ------------- |
-| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="45%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="45%" ></a>  |
+| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="90%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="90%" ></a>  |
 
 
 | Component Api  | Client-Side Localization|
 | ------------- | ------------- |
-| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="45%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_06.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_06.png?raw=true" align="center" width="45%" ></a>  |
+| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="90%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_06.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_06.png?raw=true" align="center" width="90%" ></a>  |
 
 
 | Exception Localization  | AjaxException Localization |
 | ------------- | ------------- |
-| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" align="center" width="45%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" align="center" width="45%" ></a>  |
+| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" align="center" width="90%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" align="center" width="90%" ></a>  |
 
 
 
