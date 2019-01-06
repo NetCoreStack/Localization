@@ -1,4 +1,4 @@
-## NetCoreStack Localization v1.0.5
+## NetCoreStack Localization v1.0.6
 ### Database Resource Localization for .NET Core with Entity Framework and In Memory Cache
 [![NuGet](https://img.shields.io/nuget/v/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
 [![NuGet](https://img.shields.io/nuget/dt/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
@@ -7,7 +7,7 @@
 
 ### Requirements:
 * .NET Core 2.1 or later
-* SQL Server 2008-2016
+* SQLite or MsSQL Server
 
 #### Install for .NET Core
 ```
