@@ -19,7 +19,14 @@ namespace NetCoreStack.Localization
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(Configurator.SqlConnectionString);
+            if (Configurator != null)
+            {
+                if (Configurator.SqlConnectionString.Contains("sqlite"))
+                    optionsBuilder.UseSqlite(Configurator.SqlConnectionString);
+                else
+                    optionsBuilder.UseSqlServer(Configurator.SqlConnectionString);
+            }
+
         }
     }
 }
