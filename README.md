@@ -1,27 +1,42 @@
-## NetCoreStack Localization v1.0.6
-### Database Resource Localization for .NET Core with Entity Framework and In Memory Cache
+# NetCoreStack Localization v1.0.6
+## Database Resource Localization for .NET Core with Entity Framework and In Memory Cache
 [![NuGet](https://img.shields.io/nuget/v/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
 [![NuGet](https://img.shields.io/nuget/dt/NetCoreStack.Localization.svg?longCache=true&style=flat-square)](https://www.nuget.org/packages/NetCoreStack.Localization)
 
-[Latest release on Nuget - https://www.nuget.org/packages/NetCoreStack.Localization](https://www.nuget.org/packages/NetCoreStack.Localization)
+## Links
+* **Online Demo Page:** [http://netcorestack-localization-test.herokuapp.com/](http://netcorestack-localization-test.herokuapp.com/)
 
-### Requirements:
+* **Docs:** [https://netcorestack.github.io/Localization/](https://netcorestack.github.io/Localization/)
+
+* **Latest release on Nuget:** [https://www.nuget.org/packages/NetCoreStack.Localization](https://www.nuget.org/packages/NetCoreStack.Localization)
+
+* **Docker Image:** [https://hub.docker.com/r/tahaipek/netcorestack-localization-test-hosting](https://hub.docker.com/r/tahaipek/netcorestack-localization-test-hosting)
+
+
+## Docker File
+```
+PM> docker pull tahaipek/netcorestack-localization-test-hosting
+PM> docker run -d -p 5003:80 netcorestack-localization-test-hosting
+```
+
+## Requirements:
 * .NET Core 2.1 or later
 * SQLite or MsSQL Server
 
-#### Install for .NET Core
+### Install for .NET Core
 ```
 PM> Install-Package NetCoreStack.Localization
 ```
 
-### Features
+## Features
 * .NET Core Resources in MsSql Server
 * Injectable .NET Core StringLocalizers
 * Serve Resources to JavaScript as JSON
 * Directly access and manage Languages/Resources with api and code
 
-### Installation
-##### AppSettings Configuration
+
+## Installation
+### **AppSettings Configuration**
 Configuration settings in `AppSettings.json`:
 ```json
 {
@@ -33,7 +48,7 @@ Configuration settings in `AppSettings.json`:
   	}
 }
 ```
-##### Enable NetCoreStack.Localization in ASP.NET Core
+### **Enable NetCoreStack.Localization in ASP.NET Core**
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -50,7 +65,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-##### Client-side localization in *.cshtml file
+
+### **Client-side localization in \*.cshtml file**
 ```html
 <head>
 	<!-- Optional: The resources defined javascript. =>  "window.culture.resource"  -->
@@ -76,7 +92,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 </body>
 ```
 
-##### Back-end Localization in *.cs file
+### **Back-end Localization in \*.cs file**
 ```csharp 
 public class HomeController : Controller
 {
@@ -94,9 +110,8 @@ public class HomeController : Controller
 }
 ```
 
-------
 
-### Test Project Preview
+### **Test Project Preview**
 
 | How To Use  | Forms & Validations|
 | ------------- | ------------- |

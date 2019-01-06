@@ -50,9 +50,9 @@ namespace NetCoreStack.Localization.Test.Hosting
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
             }
 
+            app.UseHsts();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
