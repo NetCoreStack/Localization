@@ -27,15 +27,31 @@ namespace NetCoreStack.Localization
         {
             services.AddMemoryCache();
             services.AddNetCoreStackSqlDb<LocalizationDBContext>(configuration);
+            
+            services.Configure<LocalizationSettings>(configuration.GetSection(nameof(LocalizationSettings)));
 
             services.AddSingleton<IConfigureOptions<MvcOptions>, DefaultDataAnnotationsMvcOptionsSetup>();
             services.AddSingleton<LocalizationInMemoryCacheProvider>();
 
-            services.AddSingleton<IStringLocalizerFactory, DatabaseStringLocalizerFactory>();
+            services.AddSingleton<IStringLocalizerFactory, DatabaseStringLocalizerFactory>((ctx) =>
+            {
+                var cacheProvider = ctx.GetService<LocalizationInMemoryCacheProvider>();
+                var options = ctx.GetService<IOptions<LocalizationSettings>>();
+
+                return new DatabaseStringLocalizerFactory(cacheProvider, options);
+            });
+
+
             services.AddSingleton<ILocalizationStartupTask, DatabaseStartupTask>();
             services.AddSingleton<IConfigureOptions<MvcOptions>, DefaultDataAnnotationsMvcOptionsSetup>();
 
-            services.AddScoped<IStringLocalizer, DatabaseStringLocalizer>();
+            services.AddScoped<IStringLocalizer, DatabaseStringLocalizer>((ctx) =>
+            {
+                var cacheProvider = ctx.GetService<LocalizationInMemoryCacheProvider>();
+                var options = ctx.GetService<IOptions<LocalizationSettings>>();
+
+                return new DatabaseStringLocalizer(cacheProvider, options);
+            });
 
             services.Configure<RazorViewEngineOptions>(options =>
             {
@@ -43,7 +59,7 @@ namespace NetCoreStack.Localization
             });
 
             services.AddMvc()
-                .ConfigureApplicationPartManager(k => k.FeatureProviders.Add(new GenericControllerFeatureProvider())) // OR //.AddApplicationPart(typeof(ServiceCollectionExtensions).GetTypeInfo().Assembly)
+                .ConfigureApplicationPartManager(k => k.FeatureProviders.Add(new GenericControllerFeatureProvider()))
                 .AddDataAnnotationsLocalization()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

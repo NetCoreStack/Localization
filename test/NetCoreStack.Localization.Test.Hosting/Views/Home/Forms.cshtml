@@ -3,7 +3,7 @@
 @using System.Globalization
 @model TestFormViewMode
 @{
-    ViewData["Title"] = @Localizer["Forms"];
+    ViewData["Title"] = @Localizer["Menu_Forms"];
 }
 
 <form asp-controller="Home" asp-action="Forms" method="post" class="needs-validation" novalidate>
@@ -20,32 +20,32 @@
 
                         <div class="form-group">
                             <label class="form-label" asp-for="BirthDate"></label>
-                            <input asp-for="BirthDate" class="form-control" autocomplete="off">
+                            <input asp-for="BirthDate" class="form-control form-control-sm" autocomplete="off">
                             <span asp-validation-for="BirthDate" class="text-danger small"></span>
                         </div>
                         <div class="form-group">
                             <label class="form-label" asp-for="Time"></label>
-                            <input asp-for="Time" class="form-control" autocomplete="off">
+                            <input asp-for="Time" class="form-control form-control-sm" autocomplete="off">
                             <span asp-validation-for="Time" class="text-danger small"></span>
                         </div>
                         <div class="form-group">
                             <label class="form-label" asp-for="Currency"></label>
-                            <input asp-for="Currency" class="form-control" autocomplete="off">
+                            <input asp-for="Currency" class="form-control form-control-sm" autocomplete="off">
                             <span asp-validation-for="Currency" class="text-danger small"></span>
                         </div>
                         <div class="form-group">
                             <label class="form-label" asp-for="PhoneNumber"></label>
-                            <input asp-for="PhoneNumber" class="form-control" autocomplete="off" placeholder="0000-0000">
+                            <input asp-for="PhoneNumber" class="form-control form-control-sm" autocomplete="off" placeholder="0000-0000">
                             <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
                         </div>
                         <div class="form-group">
                             <label class="form-label" asp-for="CreditCard"></label>
-                            <input asp-for="CreditCard" class="form-control" autocomplete="off" placeholder="0000-0000-0000-0000">
+                            <input asp-for="CreditCard" class="form-control form-control-sm" autocomplete="off" placeholder="0000-0000-0000-0000">
                             <span asp-validation-for="CreditCard" class="text-danger small"></span>
                         </div>
                         <div class="form-group">
                             <label class="form-label" asp-for="IpAddress"></label>
-                            <input asp-for="IpAddress" class="form-control" autocomplete="off" placeholder="000.000.000.000">
+                            <input asp-for="IpAddress" class="form-control form-control-sm" autocomplete="off" placeholder="000.000.000.000">
                             <span asp-validation-for="IpAddress" class="text-danger small"></span>
                         </div>
 
@@ -68,21 +68,21 @@
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="Username"></label>
-                                    <input asp-for="Username" type="text" class="form-control" placeholder="@Localizer[nameof(Model.Username)]" value="michael23">
+                                    <input asp-for="Username" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.Username)]" value="michael23">
                                     <span asp-validation-for="Username" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="EMailAddress"></label>
-                                    <input asp-for="EMailAddress" type="email" class="form-control" placeholder="@Localizer[nameof(Model.EMailAddress)]">
+                                    <input asp-for="EMailAddress" type="email" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.EMailAddress)]">
                                     <span asp-validation-for="EMailAddress" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="Password"></label>
-                                    <input asp-for="Password" type="text" class="form-control" placeholder="@Localizer[nameof(Model.Password)]">
+                                    <input asp-for="Password" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.Password)]">
                                     <span asp-validation-for="Password" class="text-danger small"></span>
                                     <p class="form-text text-muted small">Passwords must be at least 8 characters and contain at 3 of 4 of the following: upper case (A-Z), lower case (a-z), number (0-9) and special character</p>
                                 </div>
@@ -90,14 +90,14 @@
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="ConfirmPassword"></label>
-                                    <input asp-for="ConfirmPassword" type="text" class="form-control" placeholder="@Localizer[nameof(Model.ConfirmPassword)]" value="NetCoreStackLocalization2018">
+                                    <input asp-for="ConfirmPassword" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.ConfirmPassword)]" value="NetCoreStackLocalization2018">
                                     <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="Company"></label>
-                                    <input asp-for="Company" type="text" class="form-control" placeholder="@Localizer[nameof(Model.Company)]" value="NetCoreStack Code Inc.">
+                                    <input asp-for="Company" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.Company)]" value="NetCoreStack Code Inc.">
                                     <span asp-validation-for="Company" class="text-danger small"></span>
                                 </div>
                             </div>
@@ -105,42 +105,42 @@
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="FirstName"></label>
-                                    <input asp-for="FirstName" type="text" class="form-control" placeholder="@Localizer[nameof(Model.FirstName)]" value="Chet">
+                                    <input asp-for="FirstName" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.FirstName)]" value="Chet">
                                     <span asp-validation-for="FirstName" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="LastName"></label>
-                                    <input asp-for="LastName" type="text" class="form-control" placeholder="@Localizer[nameof(Model.LastName)]" value="Faker">
+                                    <input asp-for="LastName" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.LastName)]" value="Faker">
                                     <span asp-validation-for="LastName" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="Address"></label>
-                                    <input asp-for="Address" type="text" class="form-control" placeholder="@Localizer[nameof(Model.Address)]" value="Melbourne, Australia">
+                                    <input asp-for="Address" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.Address)]" value="Melbourne, Australia">
                                     <span asp-validation-for="Address" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="City"></label>
-                                    <input asp-for="City" type="text" class="form-control" placeholder="@Localizer[nameof(Model.City)]" value="Melbourne">
+                                    <input asp-for="City" type="text" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.City)]" value="Melbourne">
                                     <span asp-validation-for="City" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="PostalCode"></label>
-                                    <input asp-for="PostalCode" type="number" class="form-control" placeholder="@Localizer[nameof(Model.PostalCode)]">
+                                    <input asp-for="PostalCode" type="number" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.PostalCode)]">
                                     <span asp-validation-for="PostalCode" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="Country"></label>
-                                    <select asp-for="Country" asp-items="Model.Countries" class="form-control custom-select">
+                                    <select asp-for="Country" asp-items="Model.Countries" class="form-control form-control-sm custom-select">
                                         <option>Please select one</option>
                                     </select>
                                     <span asp-validation-for="Country" class="text-danger small"></span>
@@ -149,7 +149,7 @@
                             <div class="col-md-12">
                                 <div class="form-group mb-0">
                                     <label class="form-label" asp-for="AboutMe"></label>
-                                    <textarea asp-for="AboutMe" rows="5" class="form-control" placeholder="@Localizer[nameof(Model.AboutMe)]"></textarea>
+                                    <textarea asp-for="AboutMe" rows="5" class="form-control form-control-sm" placeholder="@Localizer[nameof(Model.AboutMe)]"></textarea>
                                     <span asp-validation-for="AboutMe" class="text-danger small"></span>
                                 </div>
                             </div>

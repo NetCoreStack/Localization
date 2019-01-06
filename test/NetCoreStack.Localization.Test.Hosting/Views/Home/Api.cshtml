@@ -2,34 +2,34 @@
 @using System
 @using System.Globalization
 @{
-    ViewData["Title"] = @Localizer["Api"];
+    ViewData["Title"] = @Localizer["Menu_Component_Api"];
 }
 
 <div class="my-3 p-3 bg-white rounded box-shadow">
 
-    <h1>@Localizer["Api"]</h1>
+    <h1>@Localizer["Menu_Component_Api"]</h1>
     <hr />
 
     <div class="alert alert-success mt-3" role="alert">
-        <h6 class="alert-heading">All Languages (GET)</h6>
+        <h6 class="alert-heading">@Localizer["ApiPage_AllLanguage"] (GET)</h6>
         <hr />
         <p><code>/NetCoreStackLocalization/GetAllLanguage <a asp-area="" asp-controller="NetCoreStackLocalization" asp-action="GetAllLanguage">(link)</a></code></p>
     </div>
 
     <div class="alert alert-success mt-3" role="alert">
-        <h6 class="alert-heading">All Resources (GET)</h6>
+        <h6 class="alert-heading">@Localizer["ApiPage_AllResources"] (GET)</h6>
         <hr />
         <p><code>/NetCoreStackLocalization/GetAllResource <a asp-area="" asp-controller="NetCoreStackLocalization" asp-action="GetAllResource">(link)</a></code></p>
     </div>
 
     <div class="alert alert-success mt-3" role="alert">
-        <h6 class="alert-heading">All Resources By LanguageId (GET)</h6>
+        <h6 class="alert-heading">@Localizer["ApiPage_AllResourcesByLanguageId"] (GET)</h6>
         <hr />
         <p><code>/NetCoreStackLocalization/GetResourceByLanguageId?Id={id} <a asp-area="" asp-controller="NetCoreStackLocalization" asp-action="GetAllResource" asp-route-id="1">(link)</a></code></p>
     </div>
 
     <div class="alert alert-success mt-3" role="alert">
-        <h6 class="alert-heading">Create Language (POST)</h6>
+        <h6 class="alert-heading">@Localizer["ApiPage_CreateLanguage"] (POST)</h6>
         <hr />
         <p><code>/NetCoreStackLocalization/CreateLanguage</code></p>
         <p>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="alert alert-success mt-3" role="alert">
-        <h6 class="alert-heading">Create Language (POST)</h6>
+        <h6 class="alert-heading">@Localizer["ApiPage_CreateResource"] (POST)</h6>
         <hr />
         <p><code>/NetCoreStackLocalization/CreateResource</code></p>
         <p>

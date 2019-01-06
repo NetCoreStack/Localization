@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/site.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/jquery.validate.min.js"></script>
@@ -21,55 +22,57 @@
     @RenderSection("Styles", required: false)
 
 </head>
-<body class="bg-light">
+<body class="bg-light small">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a asp-area="" asp-controller="Home" asp-action="Index" title="@Localizer["Logo Description"]" class="navbar-brand mr-auto ml-lg-3">Logo</a>
+    <div class="container-fluid bg-dark border-bottom box-shadow">
 
-            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto"></ul>
-                <div class="form-inline my-2 my-lg-0"></div>
-                <netcorestack-languageSelector name="culture" set-cookie-with-java-script="true"></netcorestack-languageSelector>
-            </div>
-        </div>
-    </nav>
-
-    <div class="nav-scroller bg-white box-shadow">
-        <div class="container">
-
-            <nav class="nav nav-underline">
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Forms">@Localizer["Forms"]</a>
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">@Localizer["About"]</a>
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["Contact"]</a>
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Api">Component Api</a>
-
-                <a class="nav-link pl-5" asp-area="" asp-controller="Home" asp-action="CustomException">Exception Localization</a>
-                <a class="nav-link" id="ajaxException" href="#">Ajax Exception Localization</a>
-
-
-
+        <div class="container d-flex flex-column flex-md-row align-items-center p-2 px-md-3 mb-0">
+            <a asp-area="" asp-controller="Home" asp-action="Index" title="@Localizer["Logo_Description"]" class="navbar-brand my-0 mr-md-auto text-white font-weight-normal">NetCoreStack.Localization</a>
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a class="p-2 text-light" href="https://twitter.com/_tipek"><i class="fab fa-twitter mr-1"></i>Twitter</a>
+                <a class="p-2 text-light" href="https://github.com/tahaipek"><i class="fab fa-github mr-1"></i>Github</a>
             </nav>
+            <netcorestack-languageSelector name="culture" set-cookie-with-java-script="true"></netcorestack-languageSelector>
         </div>
     </div>
 
+
+
     <main role="main" class="container">
-        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-            <div class="lh-100">
-                <h6 class="mb-2 text-white lh-100">Localization</h6>
-                <small>@Localizer["Logo Description"]</small>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="my-3 p-3 bg-white rounded box-shadow">
+                    <h6>@Localizer["HowToUse"]</h6>
+                    <nav class="nav flex-column">
+                        <a class="nav-link p-1" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Menu_Home"]</a>
+                        <a class="nav-link p-1" asp-area="" asp-controller="Home" asp-action="Forms">@Localizer["Menu_Forms"]</a>
+                        <a class="nav-link p-1" asp-area="" asp-controller="Home" asp-action="Api">@Localizer["Menu_Component_Api"]</a>
+                        <a class="nav-link p-1" asp-area="" asp-controller="Home" asp-action="ClientSideLocalization">@Localizer["Menu_ClientSideLocalization"]</a>
+                    </nav>
+                    <hr />
+                    <h6>@Localizer["Exception Handler"]</h6>
+                    <nav class="nav flex-column">
+                        <a class="nav-link p-1" asp-area="" asp-controller="Home" asp-action="CustomException">@Localizer["Menu_ExceptionLocalization"]</a>
+                        <a class="nav-link p-1" id="ajaxException" href="#">@Localizer["Menu_AjaxExceptionLocalization"]</a>
+                    </nav>
+                </div>
+
+                <div class="my-3 p-3 bg-white rounded box-shadow">
+                    <h6>@Localizer["Sample Pages"]</h6>
+                    <hr />
+                    <nav class="nav flex-column">
+                        <a class="nav-link p-1" asp-area="" asp-controller="Home" asp-action="About">@Localizer["Menu_About"]</a>
+                        <a class="nav-link p-1" asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["Menu_Contact"]</a>
+                    </nav>
+                </div>
             </div>
-        </div>
-
-        <div class="">
-
-            @RenderBody()
-
+            <div class="col-9">
+                <div class="container">
+                    <div class="alert alert-info mt-3">@Html.Raw(Localizer["HasNoEquivalentInOtherLanguages"])</div>
+                    @RenderBody()
+                </div>
+            </div>
         </div>
 
     </main>
@@ -82,7 +85,7 @@
                 <a class="nav-link" asp-area="" asp-controller="NetCoreStackLocalization" asp-action="showmetheculture">Show Me The Culture On Component</a>
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Api">Component Api</a>
             </nav>
-            <span class="text-muted small ml-lg-3">@Html.Raw(Localizer["Copyright", "NetCoreStack.Localization"])</span>
+            <span class="text-muted small ml-lg-3">@Html.Raw(Localizer["Copyright", DateTime.Now.Year.ToString(), "NetCoreStack.Localization"])</span>
         </div>
     </footer>
 

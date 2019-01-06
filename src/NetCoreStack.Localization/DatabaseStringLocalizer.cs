@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using NetCoreStack.Localization.MemoryCache;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,11 +10,14 @@ namespace NetCoreStack.Localization
     public class DatabaseStringLocalizer : IStringLocalizer
     {
         private readonly LocalizationInMemoryCacheProvider _cacheProvider;
+        private readonly LocalizationSettings _localizationSettings;
+
         protected CultureInfo CurrentCulture => System.Threading.Thread.CurrentThread.CurrentCulture;
 
-        public DatabaseStringLocalizer(LocalizationInMemoryCacheProvider cacheProvider)
+        public DatabaseStringLocalizer(LocalizationInMemoryCacheProvider cacheProvider, IOptions<LocalizationSettings> localizationSettings)
         {
             _cacheProvider = cacheProvider;
+            _localizationSettings = localizationSettings.Value;
         }
 
         public LocalizedString this[string name]
@@ -52,8 +56,12 @@ namespace NetCoreStack.Localization
 
         private string GetString(string name)
         {
-            var query = _cacheProvider.GetResourceValueByLanguageCultureNameAndResourceKey(CurrentCulture.Name, name);
-            return query;
+            var value = _cacheProvider.GetResourceValueByLanguageCultureNameAndResourceKey(CurrentCulture.Name, name);
+
+            if (_localizationSettings.UseDefaultLanguageWhenValueIsNull && string.IsNullOrEmpty(value))
+                value = _cacheProvider.GetDefaultLanguageResourceValueByResourceKey(name);
+
+            return value;
         }
     }
 }

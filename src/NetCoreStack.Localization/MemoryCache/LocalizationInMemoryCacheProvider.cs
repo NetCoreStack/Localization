@@ -141,8 +141,30 @@ namespace NetCoreStack.Localization.MemoryCache
             return GetList<Language>();
         }
 
-        private IReadOnlyDictionary<long, Resource> _resourceDictionary;
+        public Language GetLanguage(string cultureName)
+        {
+            return GetAllLanguage().FirstOrDefault(k => k.CultureName == cultureName);
+        }
 
+        private Language _defaultLanguage;
+        public Language DefaultLanguage
+        {
+            get
+            {
+                if (_defaultLanguage == null)
+                {
+                    _defaultLanguage = GetAllLanguage().First(k => k.IsDefaultLanguage);
+                }
+
+                return _defaultLanguage;
+            }
+            set
+            {
+                _defaultLanguage = value;
+            }
+        }
+
+        private IReadOnlyDictionary<long, Resource> _resourceDictionary;
         public IReadOnlyDictionary<long, Resource> ResourceDictionary
         {
             get

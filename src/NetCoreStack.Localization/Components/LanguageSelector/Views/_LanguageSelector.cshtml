@@ -2,7 +2,7 @@
 @using NetCoreStack.Localization
 @model LanguageSelectorModel
 
-<select id="Localization_@Model.Name" name="@Model.Name" class="netcoreStack-languageSelector form-control" @if (!Model.SetCookieWithJavaScript) { <text>onchange="this.form.submit();"</text> }>
+<select id="Localization_@Model.Name" name="@Model.Name" class="netcoreStack-languageSelector form-control form-control-sm" @if (!Model.SetCookieWithJavaScript) { <text>onchange="this.form.submit();"</text> }>
     @{
     if (Model != null && Model.Languages != null)
     {

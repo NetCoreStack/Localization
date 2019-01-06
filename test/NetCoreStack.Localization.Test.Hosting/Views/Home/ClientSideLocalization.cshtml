@@ -1,0 +1,32 @@
+﻿@using System
+@using System.Globalization
+@{
+    ViewData["Title"] = @Localizer["Menu_ClientSideLocalization"];
+}
+
+<div class="my-3 p-3 bg-white rounded box-shadow">
+
+    <button id="clienSideLocalization" class="btn btn-outline-primary mb-3">@Localizer["Click and show client side localization sample"]</button>
+    <div id="clienSideLocalizationSample" class="alert alert-success mb-3" style="display: none;" role="alert">
+        <p class="m-0" id="clientSideLocalizationSampleMessage"></p>
+    </div>
+
+    <h5 class="alert-heading">@Localizer["HowToUse"]</h5>
+    <p><code>window.culture.resource["SampleKey"]</code></p>
+    <hr />
+
+    <pre><code id="clientSideLocalizationSampleCode"></code></pre>
+
+</div>
+
+@section Scripts{
+    <script>
+        document.getElementById('clienSideLocalization').addEventListener('click', function () {
+            document.getElementById('clienSideLocalizationSample').style.display = "block";
+            document.getElementById('clientSideLocalizationSampleMessage').innerHTML = window.culture.resource["Client Side Localization Sample Message"];
+        });
+
+        document.getElementById('clientSideLocalizationSampleCode').innerHTML = "window.culture.resource = " + JSON.stringify(window.culture.resource, undefined, 2);
+    </script>
+}
+

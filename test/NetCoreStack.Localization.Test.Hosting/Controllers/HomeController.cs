@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using NetCoreStack.Localization.Test.Hosting.Exceptions;
 using NetCoreStack.Localization.Test.Hosting.Models;
@@ -10,8 +11,10 @@ namespace NetCoreStack.Localization.Test.Hosting.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController(IOptions<MvcOptions> options)
+        private readonly IStringLocalizer _stringLocalizer;
+        public HomeController(IStringLocalizer stringLocalizer)
         {
+            _stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
@@ -21,7 +24,7 @@ namespace NetCoreStack.Localization.Test.Hosting.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = _stringLocalizer["AboutPageDescription"]; ;
 
             return View();
         }
@@ -43,6 +46,12 @@ namespace NetCoreStack.Localization.Test.Hosting.Controllers
             var vm = new TestFormViewMode();
             return View(vm);
         }
+
+        public IActionResult ClientSideLocalization()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public IActionResult Forms(TestFormViewMode model)

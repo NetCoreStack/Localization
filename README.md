@@ -27,7 +27,10 @@ Configuration settings in `AppSettings.json`:
 {
 	"DbSettings": {
 		"SqlConnectionString": "Server=.;Database=LocalizationTest;Trusted_Connection=True;MultipleActiveResultSets=true"
-	}
+	},
+	"LocalizationSettings": {
+		"UseDefaultLanguageWhenValueIsNull": true
+  	}
 }
 ```
 ##### Enable NetCoreStack.Localization in ASP.NET Core
@@ -35,10 +38,6 @@ Configuration settings in `AppSettings.json`:
 public void ConfigureServices(IServiceCollection services)
 {
 	services.AddNetCoreStackMvc(options => { options.AppName = "NetCoreStack Localization"; });
-
-	services.AddMvc();
-	
-	//Required
 	services.AddNetCoreStackLocalization(Configuration);
 }
 ```
@@ -46,25 +45,14 @@ public void ConfigureServices(IServiceCollection services)
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-	app.UseStaticFiles();
 	app.UseNetCoreStackMvc();
-	
-	//Required
 	app.UseNetCoreStackLocalization();
-
-	app.UseMvc(routes =>
-	{
-    	routes.MapRoute(
-		name: "default",
-		template: "{controller=Home}/{action=Index}/{id?}");
-	});
 }
 ```
 
+##### Client-side localization in *.cshtml file
 ```html
 <head>
-    <title>@ViewData["Title"] - NetCoreStack.Localization.Test.Hosting</title>
-	
 	<!-- Optional: The resources defined javascript. =>  "window.culture.resource"  -->
 	<netcorestack-javascriptregistrar></netcorestack-javascriptregistrar>
     
@@ -84,32 +72,50 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 	-->
 	<netcorestack-languageSelector name="culture" set-cookie-with-java-script="true"></netcorestack-languageSelector>
 	
-	@Localizer["Logo Description"]
+	@Localizer["Logo_Description"]
 </body>
+```
+
+##### Localization in back-end
+```csharp 
+public class HomeController : Controller
+{
+	private readonly IStringLocalizer _stringLocalizer;
+	public HomeController(IStringLocalizer stringLocalizer)
+	{
+		_stringLocalizer = stringLocalizer;
+	}
+
+	public IActionResult About()
+	{
+		ViewData["Message"] = _stringLocalizer["AboutPageDescription"];
+		return View();
+	}
+}
 ```
 
 ------
 
 ### Test Project Preview
 
-##### Home Page / Client side localization
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="45%" ></a>
+| How To Use  | Forms & Validations|
+| ------------- | ------------- |
+| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_01.png?raw=true" align="center" width="45%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="45%" ></a>  |
 
 
-##### Forms / Validations
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_02.png?raw=true" align="center" width="45%" ></a>
+| Component Api  | Client-Side Localization|
+| ------------- | ------------- |
+| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="45%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_06.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_06.png?raw=true" align="center" width="45%" ></a>  |
 
-##### Api
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_03.png?raw=true" align="center" width="45%" ></a>
 
-##### Custom Exception Localization
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" align="center" width="45%" ></a>
+| Exception Localization  | AjaxException Localization |
+| ------------- | ------------- |
+| <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_05.png?raw=true" align="center" width="45%" ></a>  | <a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" align="center" width="45%" ></a>  |
 
-##### Ajax Exception Localization
-<a href="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" target="_blank"><img src="https://github.com/NetCoreStack/Localization/blob/master/Sample_04.png?raw=true" align="center" width="45%" ></a>
+
+
 
 ---------
-
-###### .Net Core Localization
-###### .Net Core Localization with Entity Framework
-###### .Net Core Database Localization
+#### .Net Core Localization
+#### .Net Core Localization with Entity Framework
+#### .Net Core Database Localization

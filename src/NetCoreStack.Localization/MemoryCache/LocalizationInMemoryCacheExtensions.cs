@@ -12,36 +12,56 @@ namespace NetCoreStack.Localization.MemoryCache
             return resources;
         }
 
+        #region [ByCulture]
+
         public static List<Resource> GetResourceByLanguageCultureName(this LocalizationInMemoryCacheProvider cache, string cultureName)
         {
-            var languages = cache.GetAllLanguage();
-            var languageByCultureName = languages.FirstOrDefault(k => k.CultureName == cultureName);
+            List<Resource> resources = null;
+            var languageByCultureName = cache.GetLanguage(cultureName);
             if (languageByCultureName != null)
             {
-                var resources = cache.GetList<Resource>().Where(k => k.LanguageId == languageByCultureName.Id).ToList();
+                resources = cache.GetList<Resource>().Where(k => k.LanguageId == languageByCultureName.Id).ToList();
                 return resources;
             }
 
-            var getDefaultLangugae = languages.FirstOrDefault(k => k.IsDefaultLanguage);
-            if (getDefaultLangugae != null)
-            {
-                var resources = cache.GetList<Resource>().Where(k => k.LanguageId == getDefaultLangugae.Id).ToList();
-                return resources;
-            }
-
-            return new List<Resource>();
+            resources = cache.GetList<Resource>().Where(k => k.LanguageId == cache.DefaultLanguage.Id).ToList();
+            return resources;
         }
 
         public static Resource GetResourceByLanguageCultureNameAndResourceKey(this LocalizationInMemoryCacheProvider cache, string cultureName, string resourceKey)
         {
-            var resourcesByCulture = GetResourceByLanguageCultureName(cache, cultureName);
+            var resourcesByCulture = cache.GetResourceByLanguageCultureName(cultureName);
             return resourcesByCulture.FirstOrDefault(k => k.Key == resourceKey);
         }
 
         public static string GetResourceValueByLanguageCultureNameAndResourceKey(this LocalizationInMemoryCacheProvider cache, string cultureName, string resourceKey)
         {
-            var resource = GetResourceByLanguageCultureNameAndResourceKey(cache, cultureName, resourceKey);
+            var resource = cache.GetResourceByLanguageCultureNameAndResourceKey(cultureName, resourceKey);
             return resource?.Value;
         }
+
+        #endregion [ByCulture]
+
+        #region [DefaultLanguage]
+
+        public static List<Resource> GetDefaultLanguageResourceList(this LocalizationInMemoryCacheProvider cache)
+        {
+            var resources = cache.GetResourceListByLanguageId(cache.DefaultLanguage.Id);
+            return resources;
+        }
+
+        public static Resource GetDefaultLanguageResourceByResourceKey(this LocalizationInMemoryCacheProvider cache, string resourceKey)
+        {
+            var resource = cache.GetDefaultLanguageResourceList();
+            return resource.FirstOrDefault(k => k.Key == resourceKey);
+        }
+
+        public static string GetDefaultLanguageResourceValueByResourceKey(this LocalizationInMemoryCacheProvider cache, string resourceKey)
+        {
+            var resource = cache.GetDefaultLanguageResourceByResourceKey(resourceKey);
+            return resource?.Value;
+        }
+
+        #endregion [DefaultLanguage]
     }
 }

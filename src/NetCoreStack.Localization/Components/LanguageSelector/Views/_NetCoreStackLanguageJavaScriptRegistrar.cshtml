@@ -2,5 +2,5 @@
 @model Dictionary<string, string>
 <script>
     window.culture = {};
-    window.culture.resource = @Html.Raw(Json.Serialize(Model))
+    window.culture.resource = @Json.Serialize(Model)
 </script>
